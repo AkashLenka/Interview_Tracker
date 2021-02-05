@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<title>Interview Tracker</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/assets_new/css/main.css" />
+	</head>
+	<body >
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<%if(user){%>
+			<div class="logo"><a href="/"><%= user.username %></a>  <t>        <a href="/logout"><span>Log Out</span></a></div>
+			<%}else{%>
+			<div class="logo"><a href="/login">Login</a> <a href="/signup">          <span>Sign In</span></a></div>
+			<%}%>
+			<a href="#menu">Menu</a>
+		</header>
+
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Home</a></li>
+					<li><a href="/dsa">Data Structure & Algorithm</a></li>
+					<li><a href="/interview">Interview Experience</a></li>
+					<% for(var k=0;k< com.length;k++){%>
+						<li><a href="interview/company/<%= com[k].name %>"><%= com[k].name %></a></li>
+						<%}%>
+				</ul>
+			</nav>
+
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>Past Fascinating interview experiences</p>
+						<h2>Interview Experience</h2>
+						A job interview is an interview consisting of a conversation between a job applicant and a representative of an employer which is conducted to assess whether the applicant should be hired. Interviews are one of the most popularly used devices for employee selection. Interviews vary in the extent to which the questions are structured, from a totally unstructured and free-wheeling conversation, to a structured interview in which an applicant is asked a predetermined list of questions in a specified order; structured interviews are usually more accurate predictors of which applicants will make suitable employees, according to research studies.
+					</header>
+				</div>
+			</section>
+
+		<!-- Main -->
+
+
+		
+
+
+
+
+		
+
+				<!-- Elements -->
+				
+
+				<section id="one" class="wrapper style2">
+					<div class="inner">
+						<div class="grid-style">
+	<%for(var i=0;i< com.length;i++){%>
+							<div>
+								<div class="box" >
+									<div class="image fit">
+										<img src="<%= com[i].pic %>" alt="" />
+									</div>
+									<div class="content">
+										<header class="align-center">
+											<p>O(nlogn) -- O(n) -- var i=0;</p>
+											<h2><%= com[i].name.toUpperCase() %></h2>
+			</header>
+			<p>Click on 'Learn More' to know more about your seniors who have given interviews for this company and try to learn from their experience whcih would help you in your future internship or placement interviews. Please free to contact us also......</p>
+			<footer class="align-center">
+				<a href="interview/company/<%= com[i].name %>" class="button alt">Learn More</a>
+				<a href="<%= com[i].link %>" class="button alt">Link to Website</a>
+			</footer>
+		</div>
+	</div>
+</div>
+
+<%}%>
+</div>
+</div>
+</section>
+					
+
+					
+
+		
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://twitter.com/IITGuwahati?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.facebook.com/iitgwt/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/iitgwt/?hl=en" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://outlook.office365.com/" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="/assets_new/js/jquery.min.js"></script>
+			<script src="/assets_new/js/jquery.scrollex.min.js"></script>
+			<script src="/assets_new/js/skel.min.js"></script>
+			<script src="/assets_new/js/util.js"></script>
+			<script src="/assets_new/js/main.js"></script>
+
+	</body>
+</html>

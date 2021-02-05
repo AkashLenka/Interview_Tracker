@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<title>Interview Tracker</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/assets_new/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<%if(user){%>
+			<div class="logo"><a href="/"><%= user.username %></a>  <t>        <a href="/logout"><span>Log Out</span></a></div>
+			<%}else{%>
+			<div class="logo"><a href="/login">Login</a> <a href="/signup">          <span>Sign In</span></a></div>
+			<%}%>
+			<a href="#menu">Menu</a>
+		</header>
+
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Home</a></li>
+					<li><a href="/dsa">Data Structure & Algorithm</a></li>
+					<li><a href="/interview">Interview Experience</a></li>
+					<%for(var k=0;k< db_user.length;k++){ %>
+						<li><a href="/dsa/<%= db_user[k].topic %>"><%= db_user[k].topic %></a></li>
+						<%}%>
+				</ul>
+			</nav>
+
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>O(nlogn) -- O(n) -- int i=0 -- memset(dp,0,sizeof(dp));</p>
+						<h2>Data Structures and Algorithms</h2>
+						Data structures are generally based on the ability of a computer to fetch and store data at any place in its memory, specified by a pointer—a bit string, representing a memory address, that can be itself stored in memory and manipulated by the program. Thus, the array and record data structures are based on computing the addresses of data items with arithmetic operations, while the linked data structures are based on storing addresses of data items within the structure itself.The implementation of a data structure usually requires writing a set of procedures that create and manipulate instances of that structure. The efficiency of a data structure cannot be analyzed separately from those operations. This observation motivates the theoretical concept of an abstract data type, a data structure that is defined indirectly by the operations that may be performed on it, and the mathematical properties of those operations (including their space and time cost).
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>Arrays -- Linked List -- Graphs --Bool  </p>
+								<h2>Topics Covered</h2>
+							</header>
+							
+								<% for(var i=0;i< db_user.length; i++){ %>
+								<a href="/dsa/<%= db_user[i].topic %>" class="button alt fit" ><%= db_user[i].topic %></a>
+								
+								<% } %>
+							<p><b>Basic Pre-requisite terminologies :</b></p>
+
+							<p><b>1. Algorithm</b> is a step-by-step procedure, which defines a set of instructions to be executed in a certain order to get the desired output. Algorithms are generally created independent of underlying languages, i.e. an algorithm can be implemented in more than one programming language.</p>
+
+							<p><b>2. Time complexity</b> of an algorithm represents the amount of time required by the algorithm to run to completion. Time requirements can be defined as a numerical function T(n), where T(n) can be measured as the number of steps, provided each step consumes constant time.</p>
+
+							<p><b>3. Data Structure</b> is a way to classify various types of data such as integer, string, etc. which determines the values that can be used with the corresponding type of data, the type of operations that can be performed on the corresponding type of data. </p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://twitter.com/IITGuwahati?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.facebook.com/iitgwt/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/iitgwt/?hl=en" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://outlook.office365.com/" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="/assets_new/js/jquery.min.js"></script>
+			<script src="/assets_new/js/jquery.scrollex.min.js"></script>
+			<script src="/assets_new/js/skel.min.js"></script>
+			<script src="/assets_new/js/util.js"></script>
+			<script src="/assets_new/js/main.js"></script>
+
+	</body>
+</html>

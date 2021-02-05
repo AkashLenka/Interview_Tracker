@@ -1,0 +1,173 @@
+<html>
+	<head>
+		<title>Interview Tracker</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/assets_new/css/main.css" />
+		<link rel="stylesheet" href="/stylestemp.css" />
+		<link rel="stylesheet" href="/tooltip.css" />
+		<link rel="stylesheet" href="/hovering.css" />
+	</head>
+	<body>
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<%if(user){%>
+			<div class="logo"><a href="/"><%= user.username %></a>  <t>        <a href="/logout"><span>Log Out</span></a></div>
+			<%}else{%>
+			<div class="logo"><a href="/login">Login</a> <a href="/signup">          <span>Sign In</span></a></div>
+			<%}%>
+			<a href="#menu">Menu</a>
+		</header>
+
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Home</a></li>
+					<li><a href="/dsa">Data Structure & Algorithm</a></li>
+					<li><a href="/interview">Interview Experience</a></li>
+					<% for(var k=0;k< docum.length;k++){if(docum[k].topic==users&&docum[k].approve==true){%>
+						<li><a href="<%= docum[k].link %>"><%= docum[k].subtopic %></a></li>
+						<%}}%>
+				</ul>
+			</nav>
+
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>O(nlogn) -- O(n) -- int i=0 -- memset(dp,0,sizeof(dp));</p>
+						<h2>Data Structures and Algorithms</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>Arrays -- Linked List -- Graphs --Bool  </p>
+								<h2>Questions Covered</h2>
+							</header>
+							
+							<h4 id="euph"><b><%=users.toUpperCase()%></b></h4>
+							
+								<%var j=0%>
+								<%if(docum.length!=0){%>
+							 <% for(var i=0;i< docum.length;i++) {%>
+								<%if(docum[i].topic==users&&docum[i].approve==true){ j++;%>
+								<div class="tooltip">
+								<div class="btn" style="margin: 15;background: white;" >
+								<a href="<%= docum[i].link %>" style="text-decoration: none;" ><h4><%=j %>. <%= docum[i].subtopic %></h4></a>
+								</div>
+								<span class="tooltiptext"><%= docum[i].link %></span>
+								</div>
+								<%}}}if(j==0){%>
+								<div class="btn" style="margin: 15;background: white;">
+								<h4 style="color:red;">Error No data found</h4>
+								</div>
+								<%}%>
+							
+							<button id="myBtn">Add Question</button>
+							
+							<form id="myModal" class="modal" >
+						
+								<!-- Modal content -->
+								<div class="modal-content" style="height: 330;">
+								  <span class="close">&times;</span>
+								  <div style="text-align: center;"><b style="font-size: 40px;">ADD YOUR QUESTION</b></div>
+								  <label for="yt">Enter the Question:</label>
+								  <input placeholder="Question" type="text"id="yt" required/>
+								  <label for="yt2">Enter the Link:</label>
+								  <input placeholder="Link" type="text"id="yt2"required/>
+								  <div style="visibility: hidden;">none</div>
+								  <button class="close">Add it</button>
+								</div>
+							</form>
+						
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://twitter.com/IITGuwahati?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.facebook.com/iitgwt/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/iitgwt/?hl=en" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://outlook.office365.com/" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+		<script>
+			
+			var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var span_temp=document.getElementsByClassName("close")[1];
+        var modal = document.getElementById("myModal");
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        span.onclick = function() {
+		  modal.style.display = "none";
+		  document.querySelector('#yt').value="";
+			document.querySelector('#yt2').value="";
+		}
+		modal.addEventListener('submit',async (e)=>{
+			modal.style.display = "none";
+          const text=document.querySelector('#yt').value;
+		  document.querySelector('#yt').value="";
+		  const link=document.querySelector('#yt2').value;
+		  document.querySelector('#yt2').value="";
+		  
+          const topic=document.querySelector('#euph').textContent;
+          console.log(topic,text,link);
+          const res=await fetch('/questions',{
+              body:JSON.stringify({topic,text,link}),
+              method:"POST",
+              headers:{'Content-Type':'application/json'}
+		  });
+		});
+        // span_temp.onclick = async function() {
+        //   modal.style.display = "none";
+        //   const text=document.querySelector('#yt').value;
+		//   document.querySelector('#yt').value="";
+		//   const link=document.querySelector('#yt2').value;
+		//   document.querySelector('#yt2').value="";
+        //   const topic=document.querySelector('#euph').textContent;
+        //   console.log(topic,text,link);
+        //   const res=await fetch('/questions',{
+        //       body:JSON.stringify({topic,text,link}),
+        //       method:"POST",
+        //       headers:{'Content-Type':'application/json'}
+		//   });
+		//   const url_link='/dsa/'+topic;
+		//   location.assign(url_link);
+        // }
+        window.onclick = function(event) {
+          if (event.target == modal) {
+			modal.style.display = "none";
+			document.querySelector('#yt').value="";
+			document.querySelector('#yt2').value="";
+          }
+        }
+		</script>
+			<script src="/assets_new/js/jquery.min.js"></script>
+			<script src="/assets_new/js/jquery.scrollex.min.js"></script>
+			<script src="/assets_new/js/skel.min.js"></script>
+			<script src="/assets_new/js/util.js"></script>
+			<script src="/assets_new/js/main.js"></script>
+
+	</body>
+</html>

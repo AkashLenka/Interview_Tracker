@@ -1,0 +1,204 @@
+<html>
+	<head>
+		<title>Interview Tracker</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/assets_new/css/main.css" />
+		<link rel="stylesheet" href="/stylestemp.css" />
+		
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<style>
+			.box:hover{
+			
+				background-color: #eeeeee;
+				box-shadow:  5px 10px 8px 10px #888888 ;
+				transition-duration: 0.5s;
+			}
+		</style>
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+	</head>
+	<body>
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			<%if(user){%>
+			<div class="logo"><a href="/"><%= user.username %></a>  <t>        <a href="/logout"><span>Log Out</span></a></div>
+			<%}else{%>
+			<div class="logo"><a href="/login">Login</a> <a href="/signup">          <span>Sign In</span></a></div>
+			<%}%>
+			<a href="#menu">Menu</a>
+		</header>
+
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Home</a></li>
+					<li><a href="/dsa">Data Structure & Algorithm</a></li>
+					<li><a href="/interview">Interview Experience</a></li>
+					<% for(var k=0;k< sen.length;k++){if(sen[k].company==com&&sen[k].approve==true){%>
+						<li><a href="<%= sen[k].link %>"><%= sen[k].name %></a></li>
+						<%}}%>
+				</ul>
+			</nav>
+
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>--O(NlogN) -- Interview Experience -- Var i=0;--</p>
+						<h2>- - <%=com.toUpperCase()%> - -</h2>
+						
+						
+					</header>
+				</div>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="wrapper style2" style="padding: 4rem 0 4rem 0;">
+				<div class="inner">
+					<div style="display: none; text-align: center;"id="euph"><%=com%></div>
+					<div style="display:none;">lal</div>
+					<% var j=0 %>
+<%for(var i=0;i< sen.length;i++){if(sen[i].company==com && sen[i].approve==true){j++;%>
+	<a href="<%= sen[i].link %>"  style="text-decoration: none; color: black;">
+					<div class="box">
+					<!--<p style="margin-bottom: 0%;">-->
+						<img style="float: left;height: 161px;width: 150px; margin-right:50px; " src="data:image/<%= sen[i].pic.contentType %>;base64,<%= sen[i].pic.data.toString('base64') %>"  alt="" />
+						<header class="align-center" style="margin-bottom:0 ;">
+						
+							<h2 style="margin-bottom: 0%;font-weight: 1000; "><%= sen[i].name.toUpperCase() %><h4 style="font-weight:800;margin-bottom: 0%;">-- Year: <%= sen[i].year %> -- Branch: <%= sen[i].branch.toUpperCase() %> -- </h4></h2>
+							
+						</header>
+						<div style="overflow: hidden; height:99;">
+						<b>Experience: </b>The panel consisted of 4-5 professors. They asked us to fill a Google form where we were supposed to mention our preferences for Ph.D. My choices were Machine Learning and Theoretical Computer Science (2 options were mandatory to fill). Other than that, they have asked for the Statement of Purpose, mentioning all the projects that we have done.
+
+						I was first asked questions on Machine Learning, my first preference.
+						
+						Question1:
+						
+						Explain k-means clustering.
+						
+						Ans-: Answer to the ........ above question can be found here https://www.geeksforgeeks.org/k-means-clustering-introduction/.
+						
+						There was a counter-question that will k-means clustering always give the best clusters?
+						
+						Ans- No, but over multiple iterations, they will give answe
+						</div>
+					<!--</p>-->
+					<!--<footer class="align-center" >
+						<a href="<%= sen[i].link %>" class="button alt" style="margin-bottom: 1rem;">Learn More</a>
+					</footer>-->
+				</div>
+				</a>
+				<%}}%>
+				
+
+						<% if(j==0){%>
+							<div>
+								<div class="boxelement" style="text-align: center;">
+									
+									<div class="content" style="background-color: #f2f2f2;">
+										<p style="color:red">NO DATA TO SHOW. SORRY!!!</p>
+									</div>
+								</div>
+							</div>
+							<%}%>
+
+					</div>
+				</div>
+				
+			</section>
+
+		<!-- Two -->
+		
+
+		<!-- Three -->
+		<div style="visibility: hidden;">lol</div>
+		<p style="display: inline; margin-left:100px; ">Want to add your experience:</p>
+		<button id="myBtn" style="background-color: black; color: white; margin-left: 50px; 
+		position: relative;
+	
+		">Add Experience</button>
+		<div style="visibility: hidden;">lol</div>
+		<form id="myModal" class="modal" enctype="multipart/form-data" action="/senior" method="POST" >
+			
+			<!-- Modal content -->
+			<div class="modal-content">
+			  <span class="close">&times;</span>
+			  <div style="text-align: center;"><b style="font-size: 40px;">ADD YOUR EXPERIENCE</b></div>
+			  <label for="yt">Enter the Name:</label>
+			  <input placeholder="Name" type="text"id="name" name="name" required/>
+			  <label for="yt">Enter the Year:</label>
+			  <input placeholder="Year" type="number"id="year" name="year" required/>
+			  <label for="yt">Enter the Branch:</label>
+			  <input placeholder="Branch" type="text"id="branch" name="branch" required/>
+			  <label for="yt2">Enter the Link:</label>
+			  <input placeholder="Link" type="text"id="link" name="link" required/>
+			  <label for="yt2" style="display: none;">Enter the Company:</label>
+			  <input placeholder="Link" style="display: none;"type="text"id="company" name="company" value="<%=com %>"required/>
+			  <label for="yt7">Upload your Image:</label>
+			  <input placeholder="Image URL" type="file"accept="image/png"id="image" name="image"required/>
+			  <button class="close" style="background-color: black; color: white;">Add it</button>
+			</div>
+		</form>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://twitter.com/IITGuwahati?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.facebook.com/iitgwt/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/iitgwt/?hl=en" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://outlook.office365.com/" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+		<script>
+			
+			var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var span_temp=document.getElementsByClassName("close")[1];
+        var modal = document.getElementById("myModal");
+        btn.onclick = function() {
+          modal.style.display = "block";
+		}
+		
+        span.onclick = function() {
+		  modal.style.display = "none";
+		  document.querySelector('#name').value="";
+			document.querySelector('#year').value="";
+			document.querySelector('#branch').value="";
+			document.querySelector('#link').value="";
+			document.querySelector('#image').value="";
+		}
+		
+        window.onclick = function(event) {
+          if (event.target == modal) {
+			modal.style.display = "none";
+			document.querySelector('#name').value="";
+			document.querySelector('#year').value="";
+			document.querySelector('#branch').value="";
+			document.querySelector('#link').value="";
+			document.querySelector('#image').value="";
+          }
+        }
+		</script>
+			<script src="/assets_new/js/jquery.min.js"></script>
+			<script src="/assets_new/js/jquery.scrollex.min.js"></script>
+			<script src="/assets_new/js/skel.min.js"></script>
+			<script src="/assets_new/js/util.js"></script>
+			<script src="/assets_new/js/main.js"></script>
+
+	</body>
+</html>

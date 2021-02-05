@@ -1,0 +1,164 @@
+<%- include('assets/partial/header2'); %>
+                    <div class="pcoded-content">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-8">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">Company Content</h5>
+                                            <p class="m-b-0">Shows all the companies in database</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="/admin"> <i class="fa fa-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="/admin/form-elements-component">Form &amp; Tables</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="/admin/company">Company</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%- include('assets/partial/loader'); %>
+                        <!-- Page-header end -->
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                  
+                                    <!-- Page body start -->
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>Forms Present</h5>
+                                                        <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <form id="deleting" class="form-material">
+                                                            <% if(com!=null) {%>
+                                                            <% for (var i=0;i< com.length; i++) { %>
+                                                            <div id="idplay"class="form-group form-default" style="border-left-color: blue;border-left-width: 100px;">
+                                                                <span id="items"><%= com[i].name.toUpperCase() %></span>
+                                                                <button  style="background-color: purple;color: white; margin-left:350px;border: none;border-radius:50%;">Delete</button>
+                                                                <div id="items" style="display: none;"><%= com[i].pic %></div>
+                                                            </div>
+                                                            <%}} %>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>Adding a New Company</h5>
+                                                        <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <form id="adding" class="form-material">
+                                                            <div class="form-group form-default form-static-label">
+                                                                <input id="topics"type="text" name="footer-email" class="form-control" placeholder="Enter Company Name" required="">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label"></label>
+                                                            </div>
+                                                            <div class="form-group form-default form-static-label">
+                                                                <input id="link"type="text" name="footer-email" class="form-control" placeholder="Enter Company Link" required="">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label"></label>
+                                                            </div>
+                                                            <div class="form-group form-default form-static-label">
+                                                                
+                                                                <input id="subtopics"type="text" name="footer-email" class="form-control" placeholder="Enter image URL" required="">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label"></label>
+                                                            </div>
+                                                            <button class="button-success pure-button">ADD</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    
+                                                            </div>
+                                                            <!-- Page body end -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- Main-body end -->
+                                                    <div id="styleSelector"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+<script>
+   const form=document.querySelector('#adding');
+   form.addEventListener('submit',async (e)=>{
+       e.preventDefault();
+       const type_of_req="add";
+       const topic=document.querySelector('#topics').value;
+       const desc=document.querySelector('#subtopics').value;
+       const link=document.querySelector('#link').value;
+       console.log(topic,desc);
+       try{
+           const res=await fetch('/admin/company',{
+               method:"POST",
+               body:JSON.stringify({type_of_req,topic,desc,link}),
+               headers:{"Content-Type":"application/json"}
+           });
+           location.assign('/admin/company');
+       }
+       catch(err)
+       {
+           console.log(err);
+       }
+   });
+
+   const form_2=document.querySelector('#deleting');
+   form_2.addEventListener('click',async (e)=>{
+      // e.preventDefault();//added extra
+       const topic=e.target.parentElement.childNodes[1].textContent;
+       const desc=e.target.parentElement.childNodes[5].textContent;
+       const link="random";
+       const type_of_req="delete";
+       try{
+           const res=await fetch('/admin/company',{
+               method:"POST",
+               body:JSON.stringify({type_of_req,topic,desc}),
+               headers:{"Content-Type":"application/json"}
+           });
+          location.assign('/admin/company');
+       }
+       catch(err)
+       {
+           console.log(err);
+       }
+   });
+</script>
+<script type="text/javascript" src="/assets/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery-ui/jquery-ui.min.js "></script>
+<script type="text/javascript" src="/assets/js/popper.js/popper.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap/js/bootstrap.min.js "></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript" src="/assets/js/jquery-slimscroll/jquery.slimscroll.js "></script>
+<!-- waves js -->
+<script src="/assets/pages/waves/js/waves.min.js"></script>
+
+<!-- modernizr js -->
+<script type="text/javascript" src="/assets/js/SmoothScroll.js"></script>
+<script src="/assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
+<!-- Custom js -->
+<script src="/assets/js/pcoded.min.js"></script>
+<script src="/assets/js/vertical-layout.min.js "></script>
+<script src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="/assets/js/script.js"></script>
+</body>
+
+</html>

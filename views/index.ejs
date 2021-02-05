@@ -1,0 +1,173 @@
+<html>
+	<head>
+		<title>Interview Tracker</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/assets_new/css/main.css" />
+
+		
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header" class="alt">
+				<%if(user){%>
+				<div class="logo"><a href="/"><%= user.username %></a>  <t>        <a href="/logout"><span>Log Out</span></a></div>
+				<%}else{%>
+				<div class="logo"><a href="/login">Login</a> <a href="/signup">          <span>Sign In</span></a></div>
+				<%}%>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="/">Home</a></li>
+					<li><a href="/dsa">Data Structure & Algorithm</a></li>
+					<li><a href="/interview">Interview Experience</a></li>
+				</ul>
+			</nav>
+
+		<!-- Banner -->
+			<section class="banner full">
+				
+				<%for(var i=0;i< db_user.length;i++){ %>
+				<article>
+					<img src="/images/<%= i%5 %>.jpg" alt="" />
+					<div class="inner">
+						<header>
+							<p><%= db_user[i].desc %></p>
+							<h2 style="font-size: 100;"><%= db_user[i].topic.toUpperCase() %></h2>
+						</header>
+					</div>
+				</article>
+				<%}%>
+					
+			</section>
+
+		<!-- One -->
+			<section id="one" class="wrapper style2">
+				<div class="inner">
+					<div class="grid-style">
+
+						<div>
+							<div class="box">
+								<div class="image fit">
+									<img src="/images/pic05.jpg" alt="" />
+								</div>
+								<div class="content">
+									<header class="align-center">
+										<p>O(nlogn) -- O(n) -- var i=0;</p>
+										<h2>Data Structure and Algorithm</h2>
+									</header>
+									<p> A computer program is a collection of instructions to perform a specific task. For this, a computer program may need to store data, retrieve data, and perform computations on the data.
+
+										A data structure is a named location that can be used to store and organize data. And, an algorithm is a collection of steps to solve a particular problem. Learning data structures and algorithms allow us to write efficient and optimized computer programs.
+										
+										Our DSA tutorial will guide you to learn different types of data structures and algorithms and their implementations.....</p>
+									<footer class="align-center">
+										<a href="/dsa" class="button alt">Learn More</a>
+									</footer>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<div class="box">
+								<div class="image fit">
+									<img src="/images/pic07.png" alt="" />
+								</div>
+								<div class="content">
+									<header class="align-center">
+										<p>Amazon -- Google -- Facebook -- Tesla</p>
+										<h2>Interview Experience</h2>
+									</header>
+									<p> An interview is essentially a structured conversation where one participant asks questions, and the other provides answers. In common parlance, the word "interview" refers to a one-on-one conversation between an interviewer and an interviewee. The interviewer asks questions to which the interviewee responds, usually providing information. That information may be used or provided to other audiences immediately or later using which the data is analaysed and accordingly company shortlists people and have competitive stipend......</p>
+									<footer class="align-center">
+										<a href="/interview" class="button alt">Learn More</a>
+									</footer>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style3" style="background-image: url('/images/slide04.jpg');">
+				<div class="inner">
+					<header class="align-center">
+						<p class="special">Facebook -- Google -- Microsoft -- Tesla -- Netflix --HackerCup</p>
+						<h2>Locations</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="wrapper style2">
+				<div class="inner">
+					<header class="align-center">
+						<p class="special">Munich -- Dubai -- Paris -- London -- Helsinki --Silicon Valley</p>
+						<h2>Past Workplaces</h2>
+					</header>
+					<div class="gallery">
+						<div>
+							<div class="image fit">
+								<a href="https://www.google.co.in/"><img src="/images/google.jpg" alt="" /></a>
+								<p class="special">Google Munich HeadQuarters</p>
+							</div>
+						</div>
+						<div>
+							<div class="image fit">
+								<a href="https://www.amazon.com/"><img src="/images/amazon.jpg" alt="" /></a>
+								<p class="special">Amazon Palo Alto HeadQuarters</p>
+							</div>
+						</div>
+						<div>
+							<div class="image fit">
+								<a href="https://twitter.com/"><img src="/images/twitter.jpg" alt="" /></a>
+								<p class="special">Twitter London HeadQuarters</p>
+							</div>
+						</div>
+						<div>
+							<div class="image fit">
+								<a href="https://www.netflix.com/in/"><img src="/images/netflix.jpg" alt="" /></a>
+								<p class="special">Netflix Dubai HeadQuarters</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="https://twitter.com/IITGuwahati?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.facebook.com/iitgwt/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/iitgwt/?hl=en" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://outlook.office365.com/" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="/assets_new/js/jquery.min.js"></script>
+			<script src="/assets_new/js/jquery.scrollex.min.js"></script>
+			<script src="/assets_new/js/skel.min.js"></script>
+			<script src="/assets_new/js/util.js"></script>
+			<script src="/assets_new/js/main.js"></script>
+
+	</body>
+</html>
