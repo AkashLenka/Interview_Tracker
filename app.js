@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 const dbURI='mongodb+srv://akash_lenka:password_password@cluster0.xsfca.mongodb.net/smoothie?retryWrites=true&w=majority';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true })
-  .then((result) => {app.listen(3000);
+  .then((result) => {app.listen(3000 || process.env.PORT);
   console.log("Connected to the database");
   })
   .catch((err) => {console.log(err)
