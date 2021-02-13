@@ -334,12 +334,12 @@ module.exports.company=async (req,res)=>{
 }
 
 module.exports.senior=async (req,res)=>{
-    const {request,year,branch,company,name,link,pic}=req.body;
+    const {request,year,branch,company,name,link,pic,exp}=req.body;
     if(request=="add")
     {
     try{
         var trying =true;
-        const user=await seniors.create({company,name,year,branch,link,pic,approve:trying});
+        const user=await seniors.create({company,name,year,branch,link,pic,approve:trying,exp:exp});
         res.status('200');
     }
     catch(err)
@@ -379,6 +379,7 @@ const year=req.body.year;
 const branch=req.body.branch;
 const link=req.body.link;
 const company=req.body.company;
+const exp=req.body.exp;
 const image={
 data: fs.readFileSync(path.join('C:/Users/Akash Lenka/Desktop/ProjectWebDev' + '/uploads/' + req.file.filename)),
 contentType: 'image/png'
@@ -386,7 +387,7 @@ contentType: 'image/png'
 console.log(name,year,branch,link,company,image);
     try{
         var trying=false;
-        const tv=await seniors.create({company,branch,year,link,name,pic:image,approve:trying});
+        const tv=await seniors.create({company,branch,year,link,name,pic:image,approve:trying,exp:exp});
         res.status('200');
         const url='/interview/company/'+ company;
         res.redirect(url);
@@ -404,13 +405,14 @@ const year=req.body.year;
 const branch=req.body.branch;
 const link=req.body.link;
 const company=req.body.company;
+const exp=req.body.exp;
 const pic={
 data: fs.readFileSync(path.join('C:/Users/Akash Lenka/Desktop/ProjectWebDev' + '/uploads/' + req.file.filename)),
 contentType: 'image/png'
 }
 const trying=true;
 try{
-    const user=await seniors.create({company,name,year,branch,link,pic,approve:trying});
+    const user=await seniors.create({company,name,year,branch,link,pic,approve:trying,exp:exp});
     res.status('200');
     res.redirect('/admin/senior');
 }
