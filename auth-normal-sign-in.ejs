@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sign In </title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="description" content="Mega Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+      <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+      <meta name="author" content="codedthemes" />
+      <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="/assets/pages/waves/css/waves.min.css" type="text/css" media="all">
+      <link rel="stylesheet" type="text/css" href="/assets/icon/themify-icons/themify-icons.css">
+      <link rel="stylesheet" type="text/css" href="/assets/icon/icofont/css/icofont.css">
+      <link rel="stylesheet" type="text/css" href="/assets/icon/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+  </head>
+
+  <body themebg-pattern="theme1">
+  <!-- Pre-loader start -->
+  <%- include('assets/partial/loader'); %>
+  <!-- Pre-loader end -->
+
+    <form class="login-block">
+        <!-- Container-fluid starts -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Authentication card start -->
+                    
+                        <form class="md-float-material form-material">
+                            <div class="text-center">
+                               ADMIN
+                            </div>
+                            <div class="auth-box card">
+                                <div class="card-block">
+                                    <div class="row m-b-20">
+                                        <div class="col-md-12">
+                                            <h3 class="text-center">Sign In</h3>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-primary">
+                                        <label class="float-label">Username</label>
+                                        <input type="text" name="email" class="form-control" id="emailid" required/>
+                                        <span class="form-bar" id="emailerr" style="color: red;"></span>
+                                      
+                                    </div>
+                                    <div class="form-group form-primary">
+                                        <label class="float-label">Password</label>
+                                        <input type="password" name="password" class="form-control" id="passwordid" required/>
+                                        <span class="form-bar" id="passerr" style="color: red"></span>
+                                        
+                                    </div>
+                                    <div class="row m-t-25 text-left">
+                                        <div class="col-12">
+                                            <div class="checkbox-fade fade-in-primary d-">
+                                                <label>
+                                                    <input type="checkbox" value="">
+                                                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
+                                                    <span class="text-inverse">Remember me</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row m-t-30">
+                                        <div class="col-md-12">
+                                            <button type="button" onclick="going()"class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p class="text-inverse text-left m-b-0">Thank you.</p>  
+                                            <a href="/admin/sign_up">New User Sign Up here.</p>                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </form>
+<script>
+   async function going()
+    {
+    const usererr=document.getElementById("emailerr");
+    const passerr=document.getElementById("passerr");    
+        const temp=document.getElementById("emailid").value;
+        const passer=document.getElementById("passwordid").value;
+        console.log(temp,passer);
+        try{
+        const res=await fetch('/admin/sign_in',{
+            method:"POST",
+            body:JSON.stringify({temp,passer}),
+            headers:{"Content-Type":"application/json"}
+        });
+
+        const data=await res.json();
+        if(data.user)
+            {
+                location.assign('/admin');
+            }
+            if(data.error)
+            {
+                usererr.textContent=data.error.email;
+                passerr.textContent=data.error.password;
+            }  
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+    }
+</script>
+<script type="text/javascript" src="/assets/js/jquery/jquery.min.js"></script>     
+<script type="text/javascript" src="/assets/js/jquery-ui/jquery-ui.min.js "></script>     
+<script type="text/javascript" src="/assets/js/popper.js/popper.min.js"></script>     
+<script type="text/javascript" src="/assets/js/bootstrap/js/bootstrap.min.js "></script>
+<script src="/assets/pages/waves/js/waves.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery-slimscroll/jquery.slimscroll.js "></script>
+<script type="text/javascript" src="/assets/js/SmoothScroll.js"></script>     
+<script src="/assets/js/jquery.mCustomScrollbar.concat.min.js "></script>
+<script type="text/javascript" src="/bower_components/i18next/js/i18next.min.js"></script>
+<script type="text/javascript" src="/bower_components/i18next-xhr-backend/js/i18nextXHRBackend.min.js"></script>
+<script type="text/javascript" src="/bower_components/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.min.js"></script>
+<script type="text/javascript" src="/bower_components/jquery-i18next/js/jquery-i18next.min.js"></script>
+<script type="text/javascript" src="/assets/js/common-pages.js"></script>
+</body>
+
+</html>

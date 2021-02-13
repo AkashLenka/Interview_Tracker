@@ -1,0 +1,203 @@
+<%- include('assets/partial/header2'); %>
+                    <div class="pcoded-content">
+                        <!-- Page-header start -->
+                        <div class="page-header">
+                            <div class="page-block">
+                                <div class="row align-items-center">
+                                    <div class="col-md-8">
+                                        <div class="page-header-title">
+                                            <h5 class="m-b-10">Senior Experience</h5>
+                                            <p class="m-b-0">Contains the corresponding experience of seniors</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="breadcrumb-title">
+                                            <li class="breadcrumb-item">
+                                                <a href="/admin"> <i class="fa fa-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="/admin/bs-basic-table">Forms &amp; Tables</a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="/admin/senior">Senior</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%- include('assets/partial/loader'); %>
+                        <!-- Page-header end -->
+                        <div class="pcoded-inner-content">
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page-body start -->
+                                    <div class="page-body">
+                                        <!-- Basic table card start -->
+                                       
+                           
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>Data Table</h5>
+                                                <div class="card-header-right">
+                                                    <ul class="list-unstyled card-option">
+                                                        <li><i class="fa fa fa-wrench open-card-option"></i></li>
+                                                        <li><i class="fa fa-window-maximize full-card"></i></li>
+                                                        <li><i class="fa fa-minus minimize-card"></i></li>
+                                                        <li><i class="fa fa-refresh reload-card"></i></li>
+                                                        <li><i class="fa fa-trash close-card"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="card-block table-border-style">
+                                                <form id="delavo">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Topics</th>
+                                                                <th>Questions</th>
+                                                                <th  style="display: none;">Link</th>
+                                                                <th  style="display: none;">Image URL</th>
+                                                                <th>Year</th>
+                                                                <th>Branch</th>
+                                                                <th>Approval</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                     
+                                                        <% for(var i=0;i< sen.length;i++){ if(sen[i].approve==true){%>
+                                                            
+                                                            <tr>
+                                                                <th scope="row"><%= sen[i].company.toUpperCase() %></th>
+                                                                <td class="valuable"><%= sen[i].name %></td>
+                                                                <td class="valuable"  style="display: none;"><%= sen[i].link %></td>
+                                                                <td class="valuable"  style="display: none;"><%= sen[i].pic %></td>
+                                                                <td class="valuable"><%= sen[i].year %></td>
+                                                                <td class="valuable"><%= sen[i].branch.toUpperCase() %></td>
+                                                                <td class="valuable">Approved!!!</td>
+                                                                <td style="margin-left: 100px;color: black;border: none;"><button>Delete</button></td>
+                                                            </tr>
+                                                            <%} else{ %>
+                                                                <tr>
+                                                                    <th scope="row"><%= sen[i].company.toUpperCase() %></th>
+                                                                    <td class="valuable"><%= sen[i].name %></td>
+                                                                    <td class="valuable"  style="display: none;"><%= sen[i].link %></td>
+                                                                    <td class="valuable"  style="display: none;"><%= sen[i].pic %></td>
+                                                                    <td class="valuable"><%= sen[i].year %></td>
+                                                                 <td class="valuable"><%= sen[i].branch.toUpperCase() %></td>
+                                                                    <td style="margin-left: 100px;color: black;border: none;"><button >Approve</button></td>
+                                                                    <td style="margin-left: 100px;color: black;border: none;"><button>Delete</button></td>
+                                                                </tr>
+                                                                <%}}%>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="card-block">
+                                            <form id="addinger" class="form-material" enctype="multipart/form-data" method="POST" action="/admin/senior/new">
+                                                <div class="form-group form-default form-static-label">
+                                                    <input id="company"type="text" name="company" class="form-control" placeholder="Enter Company Name" required="">
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label"></label>
+                                                </div>
+                                                <div class="form-group form-default form-static-label">
+                                                    <input id="name"type="text" name="name" class="form-control" placeholder="Enter Name" required="">
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label"></label>
+                                                </div>
+                                                <div class="form-group form-default form-static-label">
+                                                    <input id="link"type="text" name="link" class="form-control" placeholder="Enter Link" required="">
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label"></label>
+                                                </div>
+                                                <div class="form-group form-default form-static-label">
+                                                    <span class="form-bar">Upload a picture</span>
+                                                    <input id="pic" name="pic"type="file" accept="image/png"  class="form-control"  placeholder="Enter Image URL"  required="">
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label"></label>
+                                                </div>
+                                                <div class="form-group form-default form-static-label">
+                                                   
+                                                    <input id="year" name="year" type="number"  class="form-control"  placeholder="Enter Year"  required="">
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label"></label>
+                                                </div>
+                                                <div class="form-group form-default form-static-label">
+                                                   
+                                                    <input id="branch"type="text" name="branch" class="form-control"  placeholder="Enter Branch"  required="">
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label"></label>
+                                                </div>
+                                                <div class="form-group form-default form-static-label">
+                                                   <textarea name="exp" placeholder="Enter short summary" class="form-control" required></textarea>
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label"></label>
+                                                </div>
+                                                <button class="button-success pure-button">ADD</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="styleSelector"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //one more for deleting elements
+        const form2 =document.querySelector("#delavo");
+        form2.addEventListener('click',async (e)=>{
+            const company=e.target.parentElement.parentElement.childNodes[1].textContent.toLowerCase();
+            const name=e.target.parentElement.parentElement.childNodes[3].textContent;
+            const link=e.target.parentElement.parentElement.childNodes[5].textContent;
+            const year=e.target.parentElement.parentElement.childNodes[9].textContent;
+            const branch=e.target.parentElement.parentElement.childNodes[11].textContent.toLowerCase();
+            const exp= e.target.parentElement.parentElement.childNodes[13].textContent;
+            const type=e.target.textContent;
+            var request="";
+            if(type=="Approve")
+            request="approve";
+            else if(type=="Delete")
+            request="delete";
+            console.log(request,name,company,branch);
+            try{
+            //adds data to the corresponding user data
+            const res=await fetch('/admin/senior',{
+                method:"POST",
+                body:JSON.stringify({request,year,branch,company,name,link,exp}),
+                headers:{"Content-Type":"application/json"}
+            });
+            //location.assign('/admin/bs-basic-table');
+            }
+            catch(err)
+            {
+                console.log(err);
+            }
+        });
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery-ui/jquery-ui.min.js "></script>
+    <script type="text/javascript" src="/assets/js/popper.js/popper.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap/js/bootstrap.min.js "></script>
+    <!-- waves js -->
+    <script src="/assets/pages/waves/js/waves.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="/assets/js/jquery-slimscroll/jquery.slimscroll.js "></script>
+    <!-- waves js -->
+    <script src="/assets/pages/waves/js/waves.min.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="/assets/js/modernizr/modernizr.js "></script>
+    <!-- Custom js -->
+    <script src="/assets/js/pcoded.min.js"></script>
+    <script src="/assets/js/vertical-layout.min.js "></script>
+    <script src="/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+</body>
+
+</html>
