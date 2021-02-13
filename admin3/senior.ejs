@@ -131,6 +131,11 @@
                                                     <span class="form-bar"></span>
                                                     <label class="float-label"></label>
                                                 </div>
+                                                <div class="form-group form-default form-static-label">
+                                                   <textarea name="exp" placeholder="Enter short summary" class="form-control" required></textarea>
+                                                    <span class="form-bar"></span>
+                                                    <label class="float-label"></label>
+                                                </div>
                                                 <button class="button-success pure-button">ADD</button>
                                             </form>
                                         </div>
@@ -153,6 +158,7 @@
             const link=e.target.parentElement.parentElement.childNodes[5].textContent;
             const year=e.target.parentElement.parentElement.childNodes[9].textContent;
             const branch=e.target.parentElement.parentElement.childNodes[11].textContent.toLowerCase();
+            const exp= e.target.parentElement.parentElement.childNodes[13].textContent;
             const type=e.target.textContent;
             var request="";
             if(type=="Approve")
@@ -164,7 +170,7 @@
             //adds data to the corresponding user data
             const res=await fetch('/admin/senior',{
                 method:"POST",
-                body:JSON.stringify({request,year,branch,company,name,link}),
+                body:JSON.stringify({request,year,branch,company,name,link,exp}),
                 headers:{"Content-Type":"application/json"}
             });
             //location.assign('/admin/bs-basic-table');
