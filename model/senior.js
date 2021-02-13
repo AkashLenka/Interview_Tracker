@@ -33,6 +33,10 @@ const senior=schema({
     approve:{
         type:Boolean,
         required:true
+    },
+    exp:{
+        type:String,
+        required:true
     }
 });
 
