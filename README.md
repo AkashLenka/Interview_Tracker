@@ -7,14 +7,22 @@
  * Model Creation and Data Handling in MongoDB
  * Middlewares
  
- #### **Main Page:**
-So, this is the main page of my website which shows all the list of topics and their corresponding subtags on tops with some background images this has basically two features DSA part and the Interview Tracker Part.
+#### This contains two major parts:
+* User panel
+* Admin panel
 
-![](Screenshot/Main.png)
-
-
-###### Installation Guidelines:
+#### Installation Guidelines:
 * Download the code file from github to your local system.
 * In your code editor open your terminal with its directory in current project and write 'npm install', now all the necessary packages requires for the project have got installed in your system. 
 * Open MongoDB on your web browser and create a collection.
 * Now get the url and paste it in the 'dbURI' in the app.js file and you can modify on whichever host you want to connect to.
+
+ ### **User Panel:**
+ #### **1. Main Page:**
+So, this is the main page of my website which shows all the list of topics and their corresponding subtags on tops with some background images this has basically two features DSA part and the Interview Section Part. The location feature shows the past workplaces where people have worked before.
+
+![](Screenshot/Main.png)
+
+ #### **2. DSA Page:**
+
+![](Screenshot/Main.png)
