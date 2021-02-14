@@ -8,7 +8,7 @@
  * Middlewares
  
  #### **Main Page:**
-###### So, this is the main page of my website which shows all the list of topics and their corresponding subtags on tops with some background images this has basically two features DSA part and the Interview Tracker Part.
+So, this is the main page of my website which shows all the list of topics and their corresponding subtags on tops with some background images this has basically two features DSA part and the Interview Tracker Part.
 ![](Screenshot/Main.png)
 
 
