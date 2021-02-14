@@ -25,14 +25,22 @@ So, this is the main page of my website which shows all the list of topics and t
 
  #### **2. DSA Page:**
  This page show all the data structures and algorithm contents which are important for interview purpose.
+ ![](Screenshot/dsa.png)
  #### **3.Questions Page:**
  This page contains the question with the corresponding topic along with an 'Add Questions' feature.
+ ![](Screenshot/addques.png)
  #### **4. Interview Page(Company Section):**
  This section contains all companies and their corresponding links and experiences. The 'Link to website' redirects you to the companies webpage and 'Learn More' redirects you to the interview section pages. 
+ ![](Screenshot/usercomp.png)
  #### **5. Interview Page(Experience Section):**
  This sections contains all the interview experiences of seniors and here you can add your features through the 'Add Experience' Section.
+  ![](Screenshot/screencapture-localhost-3000-interview-company-google-2021-02-14-09_25_24.png)
  #### **6. Login Page:**
+ This is the user login page.
+ ![](Screenshot/userlog.png)
  #### **7. Sign Up Page:**
+ This is the user signin page.
+ ![](Screenshot/usersign.png)
   ### **Admin Panel:**
  #### **1. Main Page:**
 So, this is the dashboard of my website which shows all the list of topics and their corresponding subtags on tops with some background images this has basically two features DSA part and the Interview Section Part. The location feature shows the past workplaces where people have worked before.
