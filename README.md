@@ -49,7 +49,7 @@ So, this is the main page of my website which shows all the list of topics and t
  ![](Screenshot/usersign.png)
   ### **Admin Panel:**
  #### **1. Main Page:**
-So, this is the dashboard of admin webpage which shows all the list of topics, questions, Experience and companies section:
+So, this is the dashboard of admin webpage which shows all the list of topics, questions, Experience and companies section(This is not made from admin bro I have just taken the template from random website modified it and coded it on my own):
 
 ![](Screenshot/dash.png)
 
